@@ -1,5 +1,7 @@
 #include <stdint.h>
 
+#include "mpconfigboard.h"
+
 // Python internal features.
 #define MICROPY_ENABLE_COMPILER                 (1)
 #define MICROPY_ENABLE_GC                       (1)
@@ -22,7 +24,10 @@ typedef long mp_off_t;
 // We need to provide a declaration/definition of alloca()
 #include <alloca.h>
 
-#define MICROPY_HW_BOARD_NAME "ELBEAR ACE-UNO"
 #define MICROPY_HW_MCU_NAME "MIK32-AMUR"
+
+#ifndef MICROPY_HW_BOARD_NAME
+#define MICROPY_HW_BOARD_NAME "UNKNOWN"
+#endif
 
 #define MP_STATE_PORT MP_STATE_VM
